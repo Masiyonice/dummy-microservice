@@ -1,8 +1,7 @@
 package com.example.microservice.order.entity;
 
 import com.example.microservice.order.constant.TableName;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +14,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = TableName.ADDRESS)
 public class Address {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     private String street;
     private String city;

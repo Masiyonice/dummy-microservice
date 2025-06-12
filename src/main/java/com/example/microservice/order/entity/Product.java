@@ -12,16 +12,12 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @Entity
-@Table(name = TableName.ORDER_ITEM)
-public class OrderItem {
+@Table(name = TableName.PRODUCT)
+public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name = "order_item_sequence", sequenceName = "order_item_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "product_sequence", sequenceName = "product_sequence", allocationSize = 1)
     private Integer id;
-    private Order orderId;
-    @OneToOne
-    @JoinColumn(name = "product_id")
-    private Product productId;
+    private String name;
     private Double price;
-    private Integer quantity;
 }

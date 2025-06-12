@@ -2,8 +2,7 @@ package com.example.microservice.order.entity;
 
 import com.example.microservice.order.constant.OrderStatus;
 import com.example.microservice.order.constant.TableName;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,12 +17,18 @@ import java.util.List;
 @Entity
 @Table(name = TableName.ORDER)
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String orderId;
     private String customerId;
     private String restaurantId;
+    @OneToOne
+    @JoinColumn(name = "address_id")
     private Address address;
     private Double money;
-    private List<OrderItem> orderItem;
+    @OneToMany(mappedBy = "orderId")
+    private List<OrderItem> orderItems;
     private String trackId;
+    @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 }
