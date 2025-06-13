@@ -17,10 +17,10 @@ public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_item_sequence")
     @SequenceGenerator(name = "order_item_sequence", sequenceName = "order_item_sequence", allocationSize = 1)
-    private Integer id;
+    private Long id;
     @ManyToOne
     @JoinColumn(name = "order_id")
-    private Order orderId;
+    private Orders orderId;
     @OneToOne
     @JoinColumn(name = "product_id")
     private Product productId;

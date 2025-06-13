@@ -16,10 +16,11 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = TableName.ORDER)
-public class Order {
+public class Orders {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String orderId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_sequence")
+    @SequenceGenerator(name = "order_sequence", sequenceName = "order_sequence", allocationSize = 1)
+    private Long orderId;
     private String customerId;
     private String restaurantId;
     @OneToOne
