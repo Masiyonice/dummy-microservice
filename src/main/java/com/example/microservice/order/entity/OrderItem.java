@@ -15,9 +15,11 @@ import lombok.NoArgsConstructor;
 @Table(name = TableName.ORDER_ITEM)
 public class OrderItem {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_item_sequence")
     @SequenceGenerator(name = "order_item_sequence", sequenceName = "order_item_sequence", allocationSize = 1)
     private Integer id;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
     private Order orderId;
     @OneToOne
     @JoinColumn(name = "product_id")
