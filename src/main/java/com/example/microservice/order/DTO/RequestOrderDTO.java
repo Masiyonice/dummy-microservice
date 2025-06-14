@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import java.util.Set;
 
 
-@NoArgsConstructor
 @RequiredArgsConstructor
 @Data
 public class RequestOrderDTO {

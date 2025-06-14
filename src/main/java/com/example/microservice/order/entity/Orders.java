@@ -23,11 +23,11 @@ public class Orders {
     private Long orderId;
     private String customerId;
     private String restaurantId;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
     private Double money;
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "orderId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems;
     private String trackId;
     @Enumerated(EnumType.STRING)
