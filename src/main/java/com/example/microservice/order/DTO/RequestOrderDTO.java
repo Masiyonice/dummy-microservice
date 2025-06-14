@@ -1,6 +1,7 @@
 package com.example.microservice.order.DTO;
 
 
+import com.example.microservice.order.constant.OrderStatus;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ public class RequestOrderDTO {
     private String city;
     private String state;
     private String zipCode;
+    private OrderStatus orderStatus;
     private Set<OrderItemDTO> orderItems;
 }
 
