@@ -9,6 +9,7 @@ import com.example.microservice.order.entity.OrderItem;
 import com.example.microservice.order.entity.Orders;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class ServiceMapper {
@@ -38,5 +39,13 @@ public class ServiceMapper {
                         .price(item.getPrice())
                         .build())
                 .toList();
+    }
+
+    public static Map<String, Object> mapToMessage(Orders entity, double sum) {
+        return Map.of(
+                "orderId", entity.getOrderId(),
+                "nominalAmount", sum,
+                "status", entity.getOrderStatus().name()
+        );
     }
 }

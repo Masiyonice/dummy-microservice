@@ -15,7 +15,7 @@ public class KafkaProducerServiceImpl implements KafkaProducerService {
     private final ObjectMapper objectMapper;
 
     @Override
-    public void sendOrderEvent(Object data) throws JsonProcessingException {
+    public void sendOrderEvent(Object data) throws Exception {
         String valueAsString = objectMapper.writeValueAsString(data);
         kafkaTemplate.send(TOPIC, valueAsString);
     }

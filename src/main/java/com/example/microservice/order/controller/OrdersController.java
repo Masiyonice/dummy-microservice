@@ -17,7 +17,7 @@ public class OrdersController {
     private final OrdersService orderService;
 
     @PostMapping
-    public ResponseEntity<CommonResponse<?>> createOrder(@RequestBody RequestOrderDTO requestOrderDTO) {
+    public ResponseEntity<CommonResponse<?>> createOrder(@RequestBody RequestOrderDTO requestOrderDTO) throws Exception {
         orderService.createOrder(requestOrderDTO);
         CommonResponse<?> response = CommonResponse.builder()
                 .statusCode(201)
