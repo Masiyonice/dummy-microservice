@@ -1,0 +1,24 @@
+package com.example.microservice.order.DTO;
+
+
+import com.example.microservice.order.constant.OrderStatus;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
+import java.util.Set;
+
+
+@RequiredArgsConstructor
+@Data
+public class RequestOrderDTO {
+    private String customerId;
+    private String restaurantId;
+    private String street;
+    private String city;
+    private String state;
+    private String zipCode;
+    private OrderStatus orderStatus;
+    private Set<OrderItemDTO> orderItems;
+}
+
