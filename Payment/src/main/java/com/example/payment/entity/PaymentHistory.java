@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,4 +26,5 @@ public class PaymentHistory {
     private Double amount;
     @Enumerated(EnumType.STRING)
     private StatusPayment status;
+    private Date createdAt;
 }

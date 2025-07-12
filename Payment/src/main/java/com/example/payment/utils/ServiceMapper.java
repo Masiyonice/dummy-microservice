@@ -1,9 +1,28 @@
 package com.example.payment.utils;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.example.payment.constant.StatusPayment;
+import com.example.payment.dto.OrderEvent;
+import com.example.payment.entity.Payment;
+import com.example.payment.entity.PaymentHistory;
+
+import java.util.Date;
+
 
 public class ServiceMapper {
 
+    public static Payment mapToPayment(OrderEvent orderEvent) {
+        return Payment.builder()
+                .amount(orderEvent.getNominalAmount())
+                .orderId(orderEvent.getOrderId())
+                .build();
+    }
+
+    public static PaymentHistory mapToPaymentHistory(Payment payment, StatusPayment statusPayment) {
+        return PaymentHistory.builder()
+                .payment(payment)
+                .amount(payment.getAmount())
+                .status(statusPayment)
+                .createdAt(new Date())
+                .build();
+    }
 }

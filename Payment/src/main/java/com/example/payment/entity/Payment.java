@@ -21,7 +21,7 @@ public class Payment {
     private String id;
     private Double amount;
     @Column(unique = true)
-    private Integer orderId;
+    private Long orderId;
     @OneToMany(mappedBy = "payment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<PaymentHistory> history =new ArrayList<>();
 
