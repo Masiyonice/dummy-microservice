@@ -5,6 +5,7 @@ import com.example.payment.dto.OrderEvent;
 import com.example.payment.entity.Payment;
 import com.example.payment.entity.PaymentHistory;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -14,6 +15,7 @@ public class ServiceMapper {
         return Payment.builder()
                 .amount(orderEvent.getNominalAmount())
                 .orderId(orderEvent.getOrderId())
+                .history(new ArrayList<>())
                 .build();
     }
 
