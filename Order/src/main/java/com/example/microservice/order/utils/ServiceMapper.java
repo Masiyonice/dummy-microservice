@@ -15,12 +15,14 @@ import java.util.Set;
 public class ServiceMapper {
 
     public static Orders mapToOrderEntity(RequestOrderDTO requestOrderDTO) {
-        Orders order = new Orders().builder()
+        new Orders();
+        Orders order = Orders.builder()
                 .customerId(requestOrderDTO.getCustomerId())
                 .restaurantId(requestOrderDTO.getRestaurantId())
                 .orderStatus(requestOrderDTO.getOrderStatus() != null ? requestOrderDTO.getOrderStatus() : OrderStatus.PENDING)
                 .build();
-        Address address = new Address().builder()
+        new Address();
+        Address address = Address.builder()
                 .street(requestOrderDTO.getStreet())
                 .city(requestOrderDTO.getCity())
                 .state(requestOrderDTO.getState())
@@ -32,12 +34,15 @@ public class ServiceMapper {
 
     public static List<OrderItem> mapToOrderItems(Set<OrderItemDTO> orderItems, Orders order) {
         return orderItems.stream()
-                .map(item -> new OrderItem().builder()
-                        .orderId(order)
-                        .name(item.getName())
-                        .quantity(item.getQuantity())
-                        .price(item.getPrice())
-                        .build())
+                .map(item -> {
+                    new OrderItem();
+                    return OrderItem.builder()
+                            .orderId(order)
+                            .name(item.getName())
+                            .quantity(item.getQuantity())
+                            .price(item.getPrice())
+                            .build();
+                })
                 .toList();
     }
 
